@@ -41,6 +41,7 @@ const ListTask = () => {
 };
 export default ListTask;
 
+//DND
 const Section = ({ status, tasks, setTasks, todos, inProgress, closed }) => {
   const [{ isOver }, drop] = useDrop(() => ({
     accept: "task",
@@ -78,16 +79,8 @@ const Section = ({ status, tasks, setTasks, todos, inProgress, closed }) => {
 
       localStorage.setItem("tasks", JSON.stringify(mTasks));
 
-      toast.success("Task status changed", {
-        style: {
-          border: "1px solid #713200",
-          padding: "16px",
-          color: "#713200",
-        },
-        iconTheme: {
-          primary: "#713200",
-          secondary: "#FFFAEE",
-        },
+      toast('Task Change!', {
+        icon: '👏',
       });
 
       return mTasks;
@@ -97,7 +90,7 @@ const Section = ({ status, tasks, setTasks, todos, inProgress, closed }) => {
   return (
     <div
       ref={drop}
-      className={`w-64 rounded-md p-2 shadow-lg font-primary ${isOver ? "bg-slate-300" : ""}`}
+      className={`w-64 bg-white rounded-md p-2 drop-shadow-lg font-primary ${isOver ? "bg-slate-300" : ""}`}
     >
       <div className={`sticky top-0 z-10 p-2 pb-4`}>
         <Header text={text} bg={bg} count={taskToMap.length} />
