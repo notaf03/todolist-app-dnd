@@ -5,7 +5,6 @@ import toast from "react-hot-toast";
 import { useTaskContext } from "../context/TaskContext";
 
 const ListTask = () => {
-
   const { tasks, setTasks } = useTaskContext();
 
   const [todos, setTodos] = useState([]);
@@ -43,7 +42,6 @@ const ListTask = () => {
 export default ListTask;
 
 const Section = ({ status, tasks, setTasks, todos, inProgress, closed }) => {
-
   const [{ isOver }, drop] = useDrop(() => ({
     accept: "task",
     drop: (item) => addItemToSection(item.id),
@@ -69,11 +67,10 @@ const Section = ({ status, tasks, setTasks, todos, inProgress, closed }) => {
   }
 
   const addItemToSection = (id) => {
-    setTasks(prev => {
-
-      const mTasks = prev.map(t => {
-        if(t.id === id){
-          return {...t, status: status};
+    setTasks((prev) => {
+      const mTasks = prev.map((t) => {
+        if (t.id === id) {
+          return { ...t, status: status };
         }
 
         return t;
@@ -81,29 +78,36 @@ const Section = ({ status, tasks, setTasks, todos, inProgress, closed }) => {
 
       localStorage.setItem("tasks", JSON.stringify(mTasks));
 
-      toast.success('Task status changed', {
+      toast.success("Task status changed", {
         style: {
-          border: '1px solid #713200',
-          padding: '16px',
-          color: '#713200',
+          border: "1px solid #713200",
+          padding: "16px",
+          color: "#713200",
         },
         iconTheme: {
-          primary: '#713200',
-          secondary: '#FFFAEE',
+          primary: "#713200",
+          secondary: "#FFFAEE",
         },
       });
 
       return mTasks;
-    })
+    });
   };
 
   return (
-    <div ref={drop} className={`font-primary w-64 rounded-md p-2 ${isOver ? "bg-slate-300" : ""}`}>
-      <Header text={text} bg={bg} count={taskToMap.length} />
-      {taskToMap.length > 0 &&
-        taskToMap.map((task) => (
-          <Task key={task.id} task={task} tasks={tasks} setTasks={setTasks} />
-        ))}
+    <div
+      ref={drop}
+      className={`w-64 rounded-md p-2 font-primary ${isOver ? "bg-slate-300" : ""}`}
+    >
+      <div className={`sticky top-0 z-10 p-2`}>
+        <Header text={text} bg={bg} count={taskToMap.length} />
+      </div>
+      <div ref={drop} className="max-h-64 overflow-y-auto">
+        {taskToMap.length > 0 &&
+          taskToMap.map((task) => (
+            <Task key={task.id} task={task} tasks={tasks} setTasks={setTasks} />
+          ))}
+      </div>
     </div>
   );
 };
@@ -125,7 +129,7 @@ const Task = ({ task, tasks, setTasks }) => {
   // DND
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "task",
-    item: {id: task.id},
+    item: { id: task.id },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
