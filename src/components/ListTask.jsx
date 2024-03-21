@@ -97,12 +97,12 @@ const Section = ({ status, tasks, setTasks, todos, inProgress, closed }) => {
   return (
     <div
       ref={drop}
-      className={`w-64 rounded-md p-2 font-primary ${isOver ? "bg-slate-300" : ""}`}
+      className={`w-64 rounded-md p-2 shadow-lg font-primary ${isOver ? "bg-slate-300" : ""}`}
     >
-      <div className={`sticky top-0 z-10 p-2`}>
+      <div className={`sticky top-0 z-10 p-2 pb-4`}>
         <Header text={text} bg={bg} count={taskToMap.length} />
       </div>
-      <div ref={drop} className="max-h-64 overflow-y-auto">
+      <div ref={drop} className="max-h-64 shadow-md overflow-y-auto">
         {taskToMap.length > 0 &&
           taskToMap.map((task) => (
             <Task key={task.id} task={task} tasks={tasks} setTasks={setTasks} />
@@ -115,7 +115,7 @@ const Section = ({ status, tasks, setTasks, todos, inProgress, closed }) => {
 const Header = ({ text, bg, count }) => {
   return (
     <div
-      className={`${bg} flex h-12 items-center rounded-md pl-4 text-sm uppercase text-white`}
+      className={`${bg} flex h-12 items-center font-semibold rounded-md pl-4 text-sm uppercase text-white`}
     >
       {text}
       <div className="ml-2 flex h-5 w-5 items-center justify-center rounded-full bg-white text-black">

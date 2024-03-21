@@ -51,7 +51,7 @@ const CreateTask = () => {
           setTask({ ...task, id: uuidv4(), name: e.target.value })
         }
       />
-      <button className="font-primary h-12 rounded-md bg-cyan-500 px-4 text-white">
+      <button className="font-primary font-semibold h-12 rounded-md bg-primaryColor px-4 text-white">
         Create
       </button>
     </form>

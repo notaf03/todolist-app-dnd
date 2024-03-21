@@ -13,11 +13,11 @@ export default {
       colors: {
         primaryColor: "#4A2B84",
       },
-      // screens: {
-      //   "2xl": "1320px",
-      // },
+      screens: {
+        "2xl": "1320px",
+      },
       fontFamily: {
-        primary: ["Satoshi", "sans-serif"],
+        primary: ["Noirden-Bold.otf"],
       },
     },
   },

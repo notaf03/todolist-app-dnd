@@ -1,5 +1,6 @@
 import { TaskProvider } from "./context/TaskContext";
 import { useEffect, useState } from "react";
+import NavbarTask from "./components/NavbarTask";
 import CreateTask from "./components/CreateTask";
 import ListTask from "./components/ListTask";
 import toast, { Toaster } from "react-hot-toast";
@@ -19,7 +20,8 @@ function App() {
     <TaskProvider>
       <DndProvider backend={HTML5Backend}>
         <Toaster />
-        <div className="flex h-screen w-screen flex-col items-center gap-16 bg-slate-200 p-3 pt-32">
+        <div className="flex h-screen w-screen flex-col items-center gap-16 bg-white p-3 pt-32">
+          <NavbarTask />
           <CreateTask tasks={tasks} setTasks={setTasks} />
           <ListTask tasks={tasks} setTasks={setTasks} />
         </div>
