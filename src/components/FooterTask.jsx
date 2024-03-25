@@ -1,6 +1,6 @@
 export default function FooterTask() {
   return (
-    <footer className="bg-secondaryColor pb-12 pt-5">
+    <footer className="bg-secondaryColor dark:bg-secDarkColor pb-12 pt-5">
       <div className="container">
         <div className="w-full border-t border-slate-700 pt-10">
           <div className="mb-5 flex items-center justify-center">
@@ -8,7 +8,7 @@ export default function FooterTask() {
             <a
               href=""
               target="_blank"
-              className="border-thirdColor text-thirdColor mr-3 flex h-9 w-9 items-center justify-center rounded-full border hover:border-primaryColor hover:bg-primaryColor hover:text-white"
+              className="border-white text-white mr-3 flex h-9 w-9 items-center justify-center rounded-full border hover:border-primaryColor hover:bg-primaryColor hover:text-white"
             >
               <svg
                 role="img"
@@ -25,7 +25,7 @@ export default function FooterTask() {
             <a
               href=""
               target="_blank"
-              className="border-thirdColor text-thirdColor mr-3 flex h-9 w-9 items-center justify-center rounded-full border hover:border-primaryColor hover:bg-primaryColor hover:text-white"
+              className="border-white text-white mr-3 flex h-9 w-9 items-center justify-center rounded-full border hover:border-primaryColor hover:bg-primaryColor hover:text-white"
             >
               <svg
                 role="img"
@@ -42,7 +42,7 @@ export default function FooterTask() {
             <a
               href=""
               target="_blank"
-              className="border-thirdColor text-thirdColor mr-3 flex h-9 w-9 items-center justify-center rounded-full border hover:border-primaryColor hover:bg-primaryColor hover:text-white"
+              className="border-white text-white mr-3 flex h-9 w-9 items-center justify-center rounded-full border hover:border-primaryColor hover:bg-primaryColor hover:text-white"
             >
               <svg
                 role="img"
@@ -59,7 +59,7 @@ export default function FooterTask() {
             <a
               href=""
               target="_blank"
-              className="border-thirdColor text-thirdColor mr-3 flex h-9 w-9 items-center justify-center rounded-full border hover:border-primaryColor hover:bg-primaryColor hover:text-white"
+              className="border-white text-white mr-3 flex h-9 w-9 items-center justify-center rounded-full border hover:border-primaryColor hover:bg-primaryColor hover:text-white"
             >
               <svg
                 role="img"
@@ -75,7 +75,7 @@ export default function FooterTask() {
           </div>
           <p className="text-center text-xs font-medium text-slate-500">
             Created By{" "}
-            <a className="font-bold text-primaryColor">Aryo Fajar Laksono</a>
+            <a className="font-bold text-primaryColor dark:text-white">Aryo Fajar Laksono</a>
           </p>
         </div>
       </div>

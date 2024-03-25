@@ -42,16 +42,16 @@ const CreateTask = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="pt-8">
       <input
         type="text"
-        className="mr-4 h-12 w-64 rounded-md border-2 border-slate-700 bg-slate-100 px-1"
+        className="mr-4 h-12 w-64 rounded-md border-2 border-slate-700 bg-slate-100 px-1 dark:border-secDarkColor"
         value={task.name}
         onChange={(e) =>
           setTask({ ...task, id: uuidv4(), name: e.target.value })
         }
       />
-      <button className="font-primary font-semibold h-12 rounded-md bg-primaryColor px-4 text-white">
+      <button className="font-primary font-semibold h-12 rounded-md bg-primaryColor px-4 text-white dark:bg-secDarkColor dark:text-white dark:hover:bg-thirdDarkColor dark:shadow-sm dark:shadow-slate-950">
         Create
       </button>
     </form>

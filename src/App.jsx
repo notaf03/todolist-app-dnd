@@ -21,7 +21,7 @@ function App() {
     <TaskProvider>
       <DndProvider backend={HTML5Backend}>
         <Toaster />
-        <div className="flex h-screen w-screen flex-col items-center gap-16 bg-primaryBackgroundColor p-3 pt-32">
+        <div className="flex w-full flex-col items-center gap-16 bg-primaryBackgroundColor dark:bg-darkColor p-3 py-20">
           <NavbarTask />
           <CreateTask tasks={tasks} setTasks={setTasks} />
           <ListTask tasks={tasks} setTasks={setTasks} />

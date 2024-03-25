@@ -90,15 +90,17 @@ const Section = ({ status, tasks, setTasks, todos, inProgress, closed }) => {
   return (
     <div
       ref={drop}
-      className={`w-64 bg-white rounded-md p-2 drop-shadow-lg font-primary ${isOver ? "bg-slate-300" : ""}`}
+      className={`w-64 bg-white dark:bg-secDarkColor dark:shadow-md dark:shadow-slate-950 rounded-md p-2 drop-shadow-lg font-primary ${isOver ? "bg-slate-300" : ""}`}
     >
+      {/* header title*/}
       <div className={`sticky top-0 z-10 p-2 pb-4`}>
-        <Header text={text} bg={bg} count={taskToMap.length} />
+        <Header text={text} bg={bg} count={taskToMap.length}/>
       </div>
-      <div ref={drop} className="max-h-64 shadow-md overflow-y-auto">
+      {/* list task */}
+      <div ref={drop} className="max-h-64 pt-[10px] px-4 pb-4 rounded-md overflow-y-auto dark:bg-thirdDarkColor dark:text-white">
         {taskToMap.length > 0 &&
           taskToMap.map((task) => (
-            <Task key={task.id} task={task} tasks={tasks} setTasks={setTasks} />
+            <Task key={task.id} task={task} tasks={tasks} setTasks={setTasks}/>
           ))}
       </div>
     </div>

@@ -4,6 +4,7 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class',
   theme: {
       container: {
       center: true,
@@ -13,13 +14,14 @@ export default {
       colors: {
         primaryColor: "#373D93",
         secondaryColor: "#222360",
-        // secondaryColor: "#373D93",
-        //dark #222360 dark2 #1B4962 dark3 #1D2A52
         primaryBackgroundColor: "#E7E8E8",
+        darkColor: "#2E3748",
+        secDarkColor: "#0A1038",
+        thirdDarkColor: "#16204C",
       },
-      screens: {
-        "2xl": "1320px",
-      },
+      // screens: {
+      //   "2xl": "1320px",
+      // },
       fontFamily: {
         primary: ["Noirden-Bold.otf"],
       },

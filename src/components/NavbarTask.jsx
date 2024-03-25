@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function NavbarTask() {
   useEffect(() => {
     // Navbar Fixed
     const handleScroll = () => {
-      const NavbarTask = document.querySelector("NavbarTask");
+      const NavbarTask = document.querySelector(".navbar");
       const fixednav = NavbarTask.offsetTop;
       if (window.pageYOffset > fixednav) {
         NavbarTask.classList.add("navbar-fixed");
@@ -22,43 +23,53 @@ export default function NavbarTask() {
   }, []); // Perhatikan bahwa kita memberikan array kosong sebagai argumen kedua untuk useEffect, sehingga ini hanya akan dijalankan sekali saat komponen dipasang
 
   // State untuk mengontrol mode gelap
-  // const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   // Efek samping untuk menambahkan atau menghapus kelas 'dark' pada elemen html
-  // useEffect(() => {
-  //   const html = document.querySelector('html');
-  //   if (isDarkMode) {
-  //     html.classList.add('dark');
-  //   } else {
-  //     html.classList.remove('dark');
-  //   }
-  // Simpan status tema ke localStorage saat isDarkMode berubah
-  //   localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-  // }, [isDarkMode]);
+  useEffect(() => {
+    const html = document.querySelector('html');
+    if (isDarkMode) {
+      html.classList.add('dark');
+    } else {
+      html.classList.remove('dark');
+    }
+    // Simpan status tema ke localStorage saat isDarkMode berubah
+    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+  }, [isDarkMode]);
 
-  // // Fungsi untuk menangani klik tombol mode gelap
-  // const handleDarkModeToggle = () => {
-  //   setIsDarkMode(!isDarkMode);
-  // };
+  // Fungsi untuk menangani klik tombol mode gelap
+  const handleDarkModeToggle = () => {
+    setIsDarkMode(!isDarkMode);
+    toast('Dark Mode!',
+  {
+    icon: '👏',
+    style: {
+      borderRadius: '10px',
+      background: '#333',
+      color: '#fff',
+    },
+  }
+);
+  };
 
-  // useEffect(() => {
-  //   // Periksa apakah tema gelap disimpan di localStorage atau apakah preferensi tema gelap disetel di browser
-  //   if (
-  //     localStorage.getItem('theme') === 'dark' ||
-  //     (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)
-  //   ) {
-  //     setIsDarkMode(true);
-  //   } else {
-  //     setIsDarkMode(false);
-  //   }
-  // }, []);
+  useEffect(() => {
+    // Periksa apakah tema gelap disimpan di localStorage atau apakah preferensi tema gelap disetel di browser
+    if (
+      localStorage.getItem('theme') === 'dark' || 
+      (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      setIsDarkMode(true);
+    } else {
+      setIsDarkMode(false);
+    }
+  }, []);
 
   return (
-    <header className="absolute left-0 top-0 z-10 flex w-full items-center bg-transparent shadow-md">
+    <header className="absolute left-0 top-0 z-10 flex w-full items-center bg-primaryBackgroundColor shadow-md navbar dark:bg-transparent">
       <div className="container">
         <div className="relative flex items-center justify-between">
           <div className="px-4 py-4">
-            <a href="" className="py-6 text-2xl font-bold text-primaryColor">
+            <a href="" className="py-6 text-2xl font-bold text-primaryColor dark:text-white">
               What do you want to do?
             </a>
           </div>
@@ -75,6 +86,8 @@ export default function NavbarTask() {
                       type="checkbox"
                       className="hidden"
                       id="dark-toggle"
+                      checked={isDarkMode}
+                      onChange={handleDarkModeToggle}
                     />
                     <label for="dark-toggle">
                       <div className="flex h-5 w-9 cursor-pointer items-center rounded-full bg-slate-500 p-1">
