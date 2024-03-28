@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import toast, { Toaster } from 'react-hot-toast';
 
 export default function NavbarTask() {
+  
   useEffect(() => {
     // Navbar Fixed
     const handleScroll = () => {
@@ -22,16 +23,23 @@ export default function NavbarTask() {
     };
   }, []); // Perhatikan bahwa kita memberikan array kosong sebagai argumen kedua untuk useEffect, sehingga ini hanya akan dijalankan sekali saat komponen dipasang
 
+
+
   // State untuk mengontrol mode gelap
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const savedTheme = localStorage.getItem('theme');
+    return savedTheme === 'dark';
+  });
 
   // Efek samping untuk menambahkan atau menghapus kelas 'dark' pada elemen html
   useEffect(() => {
     const html = document.querySelector('html');
     if (isDarkMode) {
       html.classList.add('dark');
+      localStorage.theme = 'dark';
     } else {
       html.classList.remove('dark');
+      localStorage.theme = 'light';
     }
     // Simpan status tema ke localStorage saat isDarkMode berubah
     localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
@@ -51,18 +59,6 @@ export default function NavbarTask() {
   }
 );
   };
-
-  useEffect(() => {
-    // Periksa apakah tema gelap disimpan di localStorage atau apakah preferensi tema gelap disetel di browser
-    if (
-      localStorage.getItem('theme') === 'dark' || 
-      (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
-      setIsDarkMode(true);
-    } else {
-      setIsDarkMode(false);
-    }
-  }, []);
 
   return (
     <header className="absolute left-0 top-0 z-10 flex w-full items-center bg-primaryBackgroundColor shadow-md navbar dark:bg-transparent">
